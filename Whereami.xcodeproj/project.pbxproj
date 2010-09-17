@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1702A18C1243FD4A003A27F2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1702A18B1243FD4A003A27F2 /* CoreLocation.framework */; };
+		17214D5712441D1600F4AD55 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17214D5612441D1600F4AD55 /* MapKit.framework */; };
+		17214D99124423CE00F4AD55 /* MapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 17214D98124423CE00F4AD55 /* MapPoint.m */; };
 		1D3623260D0F684500981E51 /* WhereamiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* WhereamiAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -18,6 +20,9 @@
 
 /* Begin PBXFileReference section */
 		1702A18B1243FD4A003A27F2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		17214D5612441D1600F4AD55 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		17214D97124423CE00F4AD55 /* MapPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPoint.h; sourceTree = "<group>"; };
+		17214D98124423CE00F4AD55 /* MapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPoint.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* WhereamiAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhereamiAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* WhereamiAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhereamiAppDelegate.m; sourceTree = "<group>"; };
@@ -39,6 +44,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				1702A18C1243FD4A003A27F2 /* CoreLocation.framework in Frameworks */,
+				17214D5712441D1600F4AD55 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +54,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				17214D97124423CE00F4AD55 /* MapPoint.h */,
+				17214D98124423CE00F4AD55 /* MapPoint.m */,
 				1D3623240D0F684500981E51 /* WhereamiAppDelegate.h */,
 				1D3623250D0F684500981E51 /* WhereamiAppDelegate.m */,
 			);
@@ -95,6 +103,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17214D5612441D1600F4AD55 /* MapKit.framework */,
 				1702A18B1243FD4A003A27F2 /* CoreLocation.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -165,6 +174,7 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* WhereamiAppDelegate.m in Sources */,
+				17214D99124423CE00F4AD55 /* MapPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,7 +217,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphonesimulator4.1;
 			};
 			name = Debug;
 		};
@@ -221,7 +231,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphonesimulator4.1;
 			};
 			name = Release;
 		};
