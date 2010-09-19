@@ -76,8 +76,13 @@ didAddAnnotationViews:(NSArray *)views
 	if (t < -180) {
 		return;
 	}
+	NSDateFormatter *format = [[NSDateFormatter alloc] init];
+	[format setTimeStyle:NSDateFormatterMediumStyle];
+	[format setDateStyle:NSDateFormatterMediumStyle];
+	NSDate *date = [NSDate date];
 	MapPoint *mp = [[MapPoint alloc] initWithCoordinate:[newLocation coordinate]
-												  title:[locationTitleField text]];
+												  title:[locationTitleField text]
+											   subtitle:[format stringFromDate:date]];
 	[mapView addAnnotation:mp];
 	[mp release];
 	[self foundLocation];
