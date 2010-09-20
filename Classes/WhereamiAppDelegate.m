@@ -11,7 +11,7 @@
 
 @implementation WhereamiAppDelegate
 
-@synthesize window, reverseGeocoder;
+@synthesize window, reverseGeocoder, mapSegmented;
 
 
 #pragma mark -
@@ -29,6 +29,9 @@
 	//[locationManager startUpdatingHeading];
 	
 	[mapView setShowsUserLocation:YES];
+	[mapSegmented addTarget:self 
+					 action:@selector(segmentAction:) 
+		   forControlEvents:UIControlEventValueChanged];
 	
 	
     
@@ -36,6 +39,21 @@
     
     return YES;
 }
+
+- (void)segmentAction:(id)sender
+{
+    //NSLog(@"segmentAction: selected segment = %d", [sender selectedSegmentIndex]);
+	if ([sender selectedSegmentIndex] == 0) {
+		[mapView setMapType:MKMapTypeStandard];
+	}
+	else if ([sender selectedSegmentIndex] == 1) {
+		[mapView setMapType:MKMapTypeSatellite];
+	}
+	else {
+		[mapView setMapType:MKMapTypeHybrid];
+	}
+}
+
 
 - (void)mapView:(MKMapView *)mv 
 didAddAnnotationViews:(NSArray *)views
@@ -107,6 +125,10 @@ didAddAnnotationViews:(NSArray *)views
 	   didFindPlacemark:(MKPlacemark *)placemark
 {
 	NSLog(@"Found info for map point at: %@, %@", [placemark locality], [placemark administrativeArea]);
+	MapPoint *mp = [[MapPoint alloc] initWithCoordinate:[placemark coordinate] 
+												  title:[NSString stringWithFormat:@"%@, %@", [placemark locality], [placemark administrativeArea]]];
+	[mapView addAnnotation:mp];
+	[mp release];
 }
 
 - (void)locationManager:(CLLocationManager *)manager 

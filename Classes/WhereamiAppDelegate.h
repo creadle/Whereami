@@ -15,6 +15,7 @@
     UIWindow *window;
 	CLLocationManager *locationManager;
 	MKReverseGeocoder *reverseGeocoder;
+	UISegmentedControl *mapSegmented;
 	
 	IBOutlet MKMapView *mapView;
 	IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -25,6 +26,7 @@
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) MKReverseGeocoder *reverseGeocoder;
+@property (nonatomic, retain) UISegmentedControl *mapSegmented;
 
 - (void)findLocation;
 - (void)foundLocation;
