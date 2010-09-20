@@ -11,9 +11,10 @@
 #import <MapKit/MapKit.h>
 
 @interface WhereamiAppDelegate : NSObject 
-<UIApplicationDelegate, CLLocationManagerDelegate, MKMapViewDelegate> {
+<UIApplicationDelegate, CLLocationManagerDelegate, MKMapViewDelegate, MKReverseGeocoderDelegate> {
     UIWindow *window;
 	CLLocationManager *locationManager;
+	MKReverseGeocoder *reverseGeocoder;
 	
 	IBOutlet MKMapView *mapView;
 	IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -23,6 +24,7 @@
 
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) MKReverseGeocoder *reverseGeocoder;
 
 - (void)findLocation;
 - (void)foundLocation;

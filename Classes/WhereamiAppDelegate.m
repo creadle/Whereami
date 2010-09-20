@@ -11,7 +11,7 @@
 
 @implementation WhereamiAppDelegate
 
-@synthesize window;
+@synthesize window, reverseGeocoder;
 
 
 #pragma mark -
@@ -29,6 +29,7 @@
 	//[locationManager startUpdatingHeading];
 	
 	[mapView setShowsUserLocation:YES];
+	
 	
     
     [window makeKeyAndVisible];
@@ -71,6 +72,9 @@ didAddAnnotationViews:(NSArray *)views
 	  didUpdateToLocation:(CLLocation *)newLocation 
 			 fromLocation:(CLLocation *)oldLocation
 {
+	reverseGeocoder = [[MKReverseGeocoder alloc] initWithCoordinate:[newLocation coordinate]];
+	[reverseGeocoder setDelegate:self];
+	[reverseGeocoder start];
 	NSLog(@"%@", newLocation);
 	NSTimeInterval t = [[newLocation timestamp] timeIntervalSinceNow];
 	if (t < -180) {
@@ -84,10 +88,25 @@ didAddAnnotationViews:(NSArray *)views
 												  title:[locationTitleField text]
 											   subtitle:[format stringFromDate:date]];
 	[mapView addAnnotation:mp];
-	[mp release];
+
+	
 	[self foundLocation];
+	[mp release];
+	
 	
 	//NSLog(@"%@", [locationManager heading]);
+}
+
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder 
+	   didFailWithError:(NSError *)error
+{
+	NSLog(@"MKReverseGeocoder failed to return information");
+}
+
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder 
+	   didFindPlacemark:(MKPlacemark *)placemark
+{
+	NSLog(@"Found info for map point at: %@, %@", [placemark locality], [placemark administrativeArea]);
 }
 
 - (void)locationManager:(CLLocationManager *)manager 
@@ -153,6 +172,8 @@ didAddAnnotationViews:(NSArray *)views
 
 - (void)dealloc {
 	[locationManager setDelegate:nil];
+	[reverseGeocoder setDelegate:nil];
+	[reverseGeocoder release];
     [window release];
     [super dealloc];
 }
